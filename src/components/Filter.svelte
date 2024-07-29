@@ -26,7 +26,7 @@
   fetchCategories();
 </script>
 
-<div class="container filter">
+<div class="filter-container">
   <div class="category-container">
       <div class="category-label">Categories:</div>
       <select bind:value={selectedCategory} on:change={handleChange} class="select-element">
@@ -38,50 +38,34 @@
 </div>
 
 <style>
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-  }
-
-  body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #ccf8fc;
-      color: #333;
-  }
-
-  .container {
-      position: absolute; /* Use absolute positioning */
-      top: 20%; /* Adjust top position to move it up */
-      right: 20%; /* Adjust right position as needed */
-      width: auto;
-      margin: 0; /* Remove margin when using absolute positioning */
+  .filter-container {
+    display: flex;
+    align-items: center;
   }
 
   .category-container {
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
   }
 
   .category-label {
-      margin-right: 10px;
-      font-weight: bold;
+    margin-right: 10px;
+    font-weight: bold;
   }
 
   .select-element {
-      padding: 0.5rem; /* Smaller padding */
-      border-radius: 0.5rem; /* Smaller border-radius */
-      border: 2px solid #d1d5db;
-      font-size: 0.875rem; /* text-sm */
-      background-color: #f9f9f9;
-      color: #1a1a1a;
-      width: auto; /* Set width to auto */
-      min-width: 150px; /* Set a minimum width if needed */
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 2px solid #d1d5db;
+    font-size: 0.875rem;
+    background-color: #f9f9f9;
+    color: #1a1a1a;
+    width: auto;
+    min-width: 150px;
   }
 
   .select-element:focus {
-      outline-color: #3b82f6;
-      border-color: #3b82f6;
+    outline-color: #3b82f6;
+    border-color: #3b82f6;
   }
 </style>

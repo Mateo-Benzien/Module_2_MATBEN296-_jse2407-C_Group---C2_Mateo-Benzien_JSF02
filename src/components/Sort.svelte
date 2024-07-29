@@ -4,7 +4,7 @@
   
   let currentSorting = 'default';
   
-  // Subscribe to the sorting store to get the current sorting value
+  // Subscribe to the sorting store
   const unsubscribe = sorting.subscribe(value => {
     currentSorting = value;
   });
@@ -20,8 +20,8 @@
   }
 </script>
 
-<div class="flex sm:w-[95%] max-w-[21rem] md:w-full">
-  <label for="sort" class="w-20 my-auto font-semibold">
+<div class="sort-container">
+  <label for="sort" class="sort-label">
     Sort by: 
   </label>
   <select
@@ -37,61 +37,23 @@
 </div>
 
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #ccf8fc;
-    color: #333;
-  }
-
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .flex {
+  .sort-container {
     display: flex;
     align-items: center;
   }
 
-  .sm\:w-\[95\%\] {
-    width: 95%;
-  }
-
-  .max-w-\[21rem\] {
-    max-width: 21rem;
-  }
-
-  .md\:w-full {
-    width: 100%;
-  }
-
-  .w-20 {
-    width: 5rem;
-  }
-
-  .my-auto {
-    margin: auto;
-  }
-
-  .font-semibold {
+  .sort-label {
+    margin-right: 1rem;
     font-weight: 600;
   }
 
   .select-element {
-    padding: 0.625rem; /* 10px */
+    padding: 0.625rem;
     border-radius: 0.75rem;
     border: 2px solid #d1d5db;
-    font-size: 0.875rem; /* text-sm */
+    font-size: 0.875rem;
     background-color: #f9f9f9;
     color: #1a1a1a;
-    width: 100%;
   }
 
   .select-element:focus {
