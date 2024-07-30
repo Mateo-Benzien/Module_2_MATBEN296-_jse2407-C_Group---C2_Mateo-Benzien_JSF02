@@ -1,5 +1,6 @@
+<!-- src/components/Filter.svelte -->
 <script>
-  import { filterItem, setFilterItem } from '../Store/productStore';
+  import { filterStore } from '../Store/filterStore';
   
   let selectedCategory = 'All Categories';
   let categories = [];
@@ -19,13 +20,19 @@
   // Handle category selection change
   function handleChange(event) {
       selectedCategory = event.target.value;
-      setFilterItem(selectedCategory === 'All Categories' ? '' : selectedCategory);
+      filterStore.update(state => ({
+        ...state,
+        selectedCategory: selectedCategory === 'All Categories' ? '' : selectedCategory
+      }));
   }
 
   // Reset filter to default
   function resetFilter() {
       selectedCategory = 'All Categories';
-      setFilterItem('');
+      filterStore.update(state => ({
+        ...state,
+        selectedCategory: ''
+      }));
   }
   
   // Fetch categories when component mounts
