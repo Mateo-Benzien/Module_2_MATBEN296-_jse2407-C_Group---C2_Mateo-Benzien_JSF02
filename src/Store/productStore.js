@@ -8,7 +8,6 @@ const sorting = writable('default');
 const searchTerm = writable('');
 const filterItem = writable('');
 
-// Trigger functions to ensure products are displayed correctly
 const setSorting = (newSorting) => {
   sorting.set(newSorting);
   sortProducts();
@@ -24,7 +23,6 @@ const setFilterItem = (newCategory) => {
   fetchProducts();
 };
 
-// Fetch products from the API based on category
 const fetchProducts = async () => {
   loading.set(true);
   error.set(null);
@@ -43,7 +41,6 @@ const fetchProducts = async () => {
     products.set(data);
     originalProducts.set(data);
 
-    // Ensure products are sorted and searched after fetching
     sortProducts();
     searchProducts();
   } catch (err) {
@@ -53,7 +50,6 @@ const fetchProducts = async () => {
   }
 };
 
-// Sort products based on the selected sorting order
 const sortProducts = () => {
   const currentProducts = get(products);
   const sortOrder = get(sorting);
@@ -64,7 +60,6 @@ const sortProducts = () => {
   } else if (sortOrder === 'high') {
     sortedProducts.sort((a, b) => b.price - a.price);
   } else {
-    // Default sorting: show original products
     products.set(get(originalProducts));
     return;
   }
@@ -72,7 +67,6 @@ const sortProducts = () => {
   products.set(sortedProducts);
 };
 
-// Search products based on the search term
 const searchProducts = () => {
   const currentSearchTerm = get(searchTerm).trim().toLowerCase();
   if (currentSearchTerm === '') {
@@ -87,7 +81,6 @@ const searchProducts = () => {
   products.set(filteredProducts);
 };
 
-// Fetch initial products
 fetchProducts();
 
 export {

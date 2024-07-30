@@ -1,5 +1,6 @@
 <script>
   import Ratings from '../components/Rating.svelte';
+  import { createEventDispatcher } from 'svelte';
 
   export let product = {
     id: '',
@@ -9,9 +10,15 @@
     rating: 0,
     category: ''
   };
+
+  const dispatch = createEventDispatcher();
+
+  const handleClick = () => {
+    dispatch('navigate', { id: product.id });
+  };
 </script>
 
-<div class="product-card">
+<div class="product-card" on:click={handleClick}>
   <img src={product.image} alt={product.title} />
   <h2>{product.title}</h2>
   <div class="rating">
@@ -36,7 +43,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color:#000
+    color: #000;
+    cursor: pointer;
   }
 
   .product-card:hover {
