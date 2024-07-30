@@ -27,7 +27,7 @@
     </a>
     <div class="header-right">
       <a href="#" class="wishlist-btn">
-        <span class="wishlist-icon">♡</span>
+        <span class="wishlist-icon">♥︎</span>
         <span class="wishlist-text">Wishlist</span>
       </a>
       <div class="cart">
