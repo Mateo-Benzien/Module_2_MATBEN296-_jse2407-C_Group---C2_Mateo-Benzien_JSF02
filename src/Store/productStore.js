@@ -1,3 +1,4 @@
+// src/Store/productStore.js
 import { writable, get } from 'svelte/store';
 
 const products = writable([]);

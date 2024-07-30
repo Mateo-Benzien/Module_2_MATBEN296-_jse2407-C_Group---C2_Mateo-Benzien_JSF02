@@ -21,6 +21,12 @@
       selectedCategory = event.target.value;
       setFilterItem(selectedCategory === 'All Categories' ? '' : selectedCategory);
   }
+
+  // Reset filter to default
+  function resetFilter() {
+      selectedCategory = 'All Categories';
+      setFilterItem('');
+  }
   
   // Fetch categories when component mounts
   fetchCategories();
@@ -35,6 +41,7 @@
           {/each}
       </select>
   </div>
+  <button on:click={resetFilter} class="reset-button">Reset Filters</button>
 </div>
 
 <style>
@@ -46,6 +53,7 @@
   .category-container {
     display: flex;
     align-items: center;
+    margin-right: 10px;
   }
 
   .category-label {
@@ -65,6 +73,25 @@
   }
 
   .select-element:focus {
+    outline-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  .reset-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid #d1d5db;
+    font-size: 0.875rem;
+    background-color: #f3f4f6;
+    color: #1a1a1a;
+    cursor: pointer;
+  }
+
+  .reset-button:hover {
+    background-color: #e5e7eb;
+  }
+
+  .reset-button:focus {
     outline-color: #3b82f6;
     border-color: #3b82f6;
   }
