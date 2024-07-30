@@ -1,4 +1,3 @@
-<!-- src/App.svelte -->
 <script>
   import Header from './components/Header.svelte';
   import Layout from './components/Layout.svelte';
@@ -7,7 +6,6 @@
   import ProductDetailView from './Pages/ProductDetailView.svelte';
   import Home from './Pages/Home.svelte';
   import { onMount, onDestroy } from 'svelte';
-  import { products, loading, error, fetchProducts } from './Store/productStore';
 
   let view = 'home'; // Default view
   let productId = '';
@@ -25,7 +23,6 @@
   onMount(() => {
     window.addEventListener('popstate', handlePopState);
     handlePopState(); // Check initial state
-    fetchProducts(); // Fetch initial data
   });
 
   onDestroy(() => {
@@ -35,18 +32,12 @@
 
 <div class="App">
   <Header />
-  {#if loading}
-    <p>Loading...</p>
-  {:else if error}
-    <p>Error: {error}</p>
-  {:else}
-    {#if view === 'home'}
-      <Filter />
-      <Sort />
-      <Layout />
-    {:else if view === 'product-detail'}
-      <ProductDetailView id={productId} />
-    {/if}
+  {#if view === 'home'}
+    <Filter />
+    <Sort />
+    <Layout />
+  {:else if view === 'product-detail'}
+    <ProductDetailView id={productId} />
   {/if}
 </div>
 
